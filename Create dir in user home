@@ -1,0 +1,19 @@
+#!/bin/bash
+#shell script that will create a directory in the default home of the user currently login into the server.
+read -p "Please enter the new directory name: " directory
+
+echo "New directory name is: $directory"
+
+sudo mkdir /home/$directory
+
+echo "New diectory named $directory created"
+
+echo "The script can create any directory"
+
+ls -a | grep $directory
+
+echo " file called $yourgroupname should be created within this directory"
+
+echo " We are Etech Engineers " > /$directory/devopsteam4group3
+
+echo " devopsteam4group3 file created inside the directory $directory "

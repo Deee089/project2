@@ -1,0 +1,25 @@
+#!/bin/bash
+#write a shell script that will create a directory in the default home of the user currently login into
+#the server:
+#your script should test the following
+
+#- The script can create any directory
+#- A file called $yourgroupname should be created within this directory
+#- write into that file the word " We are Etech Engineers"
+#shell script that will create a directory in the default home of the user currently login into the server.
+
+echo " This script creates a directory in the current user default home"
+
+read -p "Please enter the new directory name: " dirname
+
+sudo mkdir $HOME/$dirname && cd $HOME/$dirname
+
+read -p "Please enter file name: " filename
+
+sudo touch $filename
+
+sudo chown -R $USER $(pwd)
+
+echo "We are Etech Engineers" >> $HOME/$dirname/$filename
+
+cat -n $HOME/$dirname/$filename

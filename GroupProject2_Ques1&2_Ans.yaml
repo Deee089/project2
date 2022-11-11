@@ -1,0 +1,31 @@
+#!/bin/bash
+#Question 1 - create any directory
+#creating any directory
+read -p "Please enter directory name: " etechdir
+sudo mkdir $etechdir
+sudo chown -R $LOGNAME $(pwd)
+sudo echo " we are Etech staff Engineers " > $(pwd)/$etechdir/pay
+
+#Question2
+#!/bin/bash
+#script use to move files from server to server
+#Author: Prof Elvis II
+user="etech1"
+password="Team4"
+file="pay"
+dir="etechdir"
+ips=(172.31.27.35 172.33.18.194)
+echo "process started!!!"
+
+sudo cd /home/$LOGNAME/$dir/$file
+if [ -n $file]; then
+for i in $(ips[@]); do
+sshpass -p $password scp $file $user@$i:/home/$user
+done
+sudo rm -rf $dir
+sudo rm $file
+echo " Thanks for chosing Etech Consulting for your Devops Training"
+else
+echo "There is an issue with your first script please go back there and fix it"
+echo "Thanks for chosing Etech Consulting for your Devops training"
+fi
